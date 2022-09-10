@@ -6,14 +6,22 @@ public class PlayerController : MonoBehaviour
 {
     Rigidbody rb;
     static int speed = 8;
+    public GameObject gameOver;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        Time.timeScale = 1;
+        gameOver.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(transform.position.y <= -10)
+        {
+            Stop();
+        }
+
         Vector3 pos = transform.position;
         if (Input.GetKey(KeyCode.W))
         {
@@ -34,5 +42,11 @@ public class PlayerController : MonoBehaviour
         }
 
         transform.position = pos;
+    }
+
+    void Stop()
+    {
+        Time.timeScale = 0;
+        gameOver.SetActive(true);
     }
 }
