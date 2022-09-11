@@ -5,27 +5,25 @@ using UnityEngine;
 public class PlatformSpawner : MonoBehaviour
 {
 	private float size;
-
+	public float spawnTime;
 	[SerializeField]
 	GameObject platform;
 
 	private Vector3 lastPosition;
 
-
+	private JsonFetcher data;
 	// Use this for initialization
 	void Start()
 	{
+		
 		size = platform.transform.localScale.x;
 		lastPosition = platform.transform.position;
+		data = GameObject.FindObjectOfType<JsonFetcher>();
 
-		/*// Create the first initial playforms.
-		for (int x = 0; x < 15; x++)
-		{
-			SpawnZ();
-		}*/
-
-		// Call the SpawnPlatform every 2 seconds.
-		InvokeRepeating("SpawnPlatform", 2f,2);
+		//spawnTime = data.getSpawn();
+		Debug.Log("time:" + spawnTime);
+		InvokeRepeating("SpawnPlatform",2,2.5f);
+		//InvokeRepeating("SpawanPlatform", 2.5f,2.5f);
 	}
 
 

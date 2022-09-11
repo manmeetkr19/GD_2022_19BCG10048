@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        Time.timeScale = 1;
+        //Time.timeScale = 1;
         gameOver.SetActive(false);
     }
 
