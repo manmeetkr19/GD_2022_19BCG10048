@@ -16,39 +16,14 @@ public class JsonFetcher : MonoBehaviour
 
     IEnumerator fetchData()
     {
-        /* Debug.Log("Loading.....");
 
-         WWW _www = new WWW(json_URL);
-
-         yield return _www;
-         if(_www.error == null)
-         {
-             processData(_www.text);
-             //Debug.Log(_www.text);
-         }
-         else
-         {
-             Debug.Log("Error in loading json");
-         }*/
-
-        UnityWebRequest request = UnityWebRequest.Get(json_URL);
-        request.chunkedTransfer = false;
-        yield return request.Send();
-
-        if (request.isNetworkError)
+        WWW www = new WWW(json_URL);
+        yield return www;
+        if(www.error == null)
         {
-
+            Debug.Log(www.text);
+            processData(www.text);
         }
-        else
-        {
-            if (request.isDone)
-            {
-                JsonData jsonData;
-                jsonData = JsonUtility.FromJson<JsonData>(request.downloadHandler.text);
-                Debug.Log(jsonData.pulpit_data);
-            }
-        }
-
        
     }
 
@@ -56,8 +31,10 @@ public class JsonFetcher : MonoBehaviour
     {
         //JsonData data = FindObjectsOfType<JsonData>();
         JsonData j_data = JsonUtility.FromJson<JsonData>(text);
+        Debug.Log(j_data.player_data.speed);
         //Debug.Log(j_data.pulpit_data);
-        speed = j_data.player_data.speed;
-        Debug.Log(speed);
+        //speed = j_data.player_data.speed;
+        //Debug.Log(speed);
     }
+
 }

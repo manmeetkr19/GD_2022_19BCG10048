@@ -52,9 +52,6 @@ public class PlatformSpawner : MonoBehaviour
 		_platform.transform.position = lastPosition + new Vector3(size, 0f, 0f);
 		lastPosition = _platform.transform.position;
 
-		/*// Assigns a material named "Assets/Resources/Color1" to the object.
-		Material newMat = Resources.Load("Color1", typeof(Material)) as Material;
-		_platform.GetComponent<Renderer>().material = newMat;*/
 	}
 
 	private void SpawnZ()
@@ -62,10 +59,6 @@ public class PlatformSpawner : MonoBehaviour
 		GameObject _platform = Instantiate(platform) as GameObject;
 		_platform.transform.position = lastPosition + new Vector3(0f, 0f, size);
 		lastPosition = _platform.transform.position;
-
-		/*// Assigns a material named "Assets/Resources/Color2" to the object.
-		Material newMat = Resources.Load("Color2", typeof(Material)) as Material;
-		_platform.GetComponent<Renderer>().material = newMat;*/
 	}
 
 }

@@ -5,8 +5,10 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     Rigidbody rb;
-    static int speed = 8;
+    public int speed = 8;
     public GameObject gameOver;
+
+    private int score = 0;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -48,5 +50,15 @@ public class PlayerController : MonoBehaviour
     {
         Time.timeScale = 0;
         gameOver.SetActive(true);
+    }
+
+    public int ScoreFetcher()
+    {
+        return score;
+    }
+
+    public void ScoreAdd()
+    {
+        score += 1;
     }
 }
